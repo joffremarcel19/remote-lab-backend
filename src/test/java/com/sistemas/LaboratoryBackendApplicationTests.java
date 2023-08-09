@@ -11,7 +11,7 @@ import com.laboratory.repo.IUserRepo;
 
 
 @SpringBootTest
-class SistemasBackendApplicationTests {
+class LaboratoryBackendApplicationTests {
 
 		
 	@Autowired

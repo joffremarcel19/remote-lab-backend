@@ -7,15 +7,15 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 
 @SpringBootApplication
-public class JugadoresBackendApplication extends SpringBootServletInitializer {
+public class LaboratoryBackendApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JugadoresBackendApplication.class, args);
+		SpringApplication.run(LaboratoryBackendApplication.class, args);
 	}
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(JugadoresBackendApplication.class);
+		return application.sources(LaboratoryBackendApplication.class);
 	}
 
 }
