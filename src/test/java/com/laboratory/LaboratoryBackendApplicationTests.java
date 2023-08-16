@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.laboratory.model.Faculty;
+import com.laboratory.model.Users;
 import com.laboratory.repo.IUserRepo;
 
 
@@ -22,14 +24,17 @@ class LaboratoryBackendApplicationTests {
 	
 	@Test
 	void verificarClave() {
-		/*Usuario us = new Usuario();		
+		/*Users us = new Users();		
 		us.setUsername("0703806307");
 		us.setPassword(bcrypt.encode("123"));				
-		us.setEnabled(true);
-		Empresa em = new Empresa();
-		em.setIdEmpresa(1);
-		us.setEmpresa(em);
-		Usuario retorno = repo.save(us);
+		us.setState(true);
+		us.setEmail("joffremarcel19@gmail.com");
+		us.setFirstnames("Joffre");
+		us.setLastnames("Farias");
+		Faculty em = new Faculty();
+		em.setIdFaculty(1);
+		us.setFaculty(em);
+		Users retorno = repo.save(us);
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));*/
 	}

@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="reservationState")
 public class ReservationState {
@@ -15,19 +18,4 @@ public class ReservationState {
 	private Integer idState;
 	@Column(name="stateName", nullable=false, length=20)
 	private String StateName;
-	public Integer getIdState() {
-		return idState;
-	}
-	public void setIdState(Integer idState) {
-		this.idState = idState;
-	}
-	public String getStateName() {
-		return StateName;
-	}
-	public void setStateName(String stateName) {
-		StateName = stateName;
-	}
-	
-	
-	
 }

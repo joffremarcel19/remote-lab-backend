@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="faculty")
 public class Faculty {
@@ -22,29 +25,5 @@ public class Faculty {
 	
 	@ManyToOne
 	@JoinColumn(name = "idUniversity", nullable = false, foreignKey = @ForeignKey(name = "FK_faculty_university"))
-	private University university;
-
-	public Integer getIdFaculty() {
-		return idFaculty;
-	}
-
-	public void setIdFaculty(Integer idFaculty) {
-		this.idFaculty = idFaculty;
-	}
-
-	public String getNameFaculty() {
-		return nameFaculty;
-	}
-
-	public void setNameFaculty(String nameFaculty) {
-		this.nameFaculty = nameFaculty;
-	}
-
-	public University getUniversity() {
-		return university;
-	}
-
-	public void setUniversity(University university) {
-		this.university = university;
-	}	
+	private University university;	
 }

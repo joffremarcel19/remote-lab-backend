@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="laboratoryState")
 public class LaboratoryState {
@@ -14,17 +17,5 @@ public class LaboratoryState {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idState;
 	@Column(name="stateName", nullable=false, length=80)
-	private String stateName;
-	public Integer getIdState() {
-		return idState;
-	}
-	public void setIdState(Integer idState) {
-		this.idState = idState;
-	}
-	public String getStateName() {
-		return stateName;
-	}
-	public void setStateName(String stateName) {
-		this.stateName = stateName;
-	}	
+	private String stateName;	
 }

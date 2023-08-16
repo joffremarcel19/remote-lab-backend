@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="asignature")
 public class Asignature {
@@ -24,26 +27,4 @@ public class Asignature {
 	@JoinColumn(name = "idFaculty", nullable = false, foreignKey = @ForeignKey(name = "FK_asignature_faculty"))
 	private Faculty faculty;
 
-	public Integer getIdAsignature() {
-		return idAsignature;
-	}
-
-	public void setIdAsignature(Integer idAsignature) {
-		this.idAsignature = idAsignature;
-	}
-
-	public String getAsignatureName() {
-		return asignatureName;
-	}
-
-	public void setAsignatureName(String asignatureName) {
-		this.asignatureName = asignatureName;
-	}
-
-	public Faculty getFaculty() {
-		return faculty;
-	}
-
-	public void setFaculty(Faculty faculty) {
-		this.faculty = faculty;
-	}}
+}

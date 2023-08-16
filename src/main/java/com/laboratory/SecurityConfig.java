@@ -1,5 +1,7 @@
 package com.laboratory;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -40,13 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired	
 	private UserDetailsService userDetailsService;		
 	
-	//@Autowired
-	//private DataSource dataSource;	
-	
-	@Bean
-	public UserDetailsService userDetailsService() {
-	    return super.userDetailsService();
-	}
+	@Autowired
+	private DataSource dataSource;	
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEnconder() {

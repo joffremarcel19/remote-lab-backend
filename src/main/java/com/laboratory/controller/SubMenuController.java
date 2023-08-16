@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +36,7 @@ public class SubMenuController {
 		return new ResponseEntity<List<Submenu>>(submenus, HttpStatus.OK);
 	}
 
+	@PreAuthorize("@authServiceImpl.tieneAcceso('listarId')")
 	@GetMapping("/{idSubmenu}")
 	public ResponseEntity<Submenu> listarPorId(@PathVariable("idSubmenu") Integer idSubmenu) throws Exception {
 		Submenu obj = service.listarPorId(idSubmenu);
@@ -45,7 +48,8 @@ public class SubMenuController {
 	}
 
 	@GetMapping("/listado/{nombre}/{idMenu}")
-	public ResponseEntity<List<Submenu>> listarSubmenuporUsuario(@PathVariable("nombre") String nombre, @PathVariable("idMenu") Integer idMenu) throws Exception {
+	public ResponseEntity<List<Submenu>> listarSubmenuporUsuario(@PathVariable("nombre") String nombre,
+			@PathVariable("idMenu") Integer idMenu) throws Exception {
 		System.out.print(nombre + idMenu);
 		List<Submenu> submenu = new ArrayList<>();
 
@@ -74,4 +78,15 @@ public class SubMenuController {
 		return new ResponseEntity<Submenu>(obj, HttpStatus.OK);
 	}
 
+	// eliminar
+	@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> eliminar(@PathVariable("idSubmenu") Integer id) throws Exception {
+		Submenu obj = service.listarPorId(id);
+		if (obj == null) {
+			throw new ModeloNotFoundException("ID NO ENCONTRADO" + id);
+		}
+		service.eliminar(id);
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
 }
