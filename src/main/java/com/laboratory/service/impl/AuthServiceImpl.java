@@ -27,6 +27,9 @@ public class AuthServiceImpl {
 		case "eliminar":
 			metodoRol="ADMIN";
 			break;
+		case "editar":
+			metodoRol="ADMIN";
+			break;
 		}
 		
 		System.out.println(metodoRol);

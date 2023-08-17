@@ -60,7 +60,7 @@ public class SubMenuController {
 		}
 		return new ResponseEntity<List<Submenu>>(submenu, HttpStatus.OK);
 	}
-
+	@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PostMapping
 	public ResponseEntity<Submenu> registrar(@RequestBody Submenu c) throws Exception {
 
@@ -72,6 +72,7 @@ public class SubMenuController {
 	}
 
 	// modificar
+	@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PutMapping
 	public ResponseEntity<Submenu> modificar(@RequestBody Submenu c) throws Exception {
 		Submenu obj = service.modificar(c);

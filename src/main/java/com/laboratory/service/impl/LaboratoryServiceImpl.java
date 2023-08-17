@@ -1,5 +1,7 @@
 package com.laboratory.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +22,9 @@ public class LaboratoryServiceImpl extends CRUDImpl<Laboratory, Integer> impleme
 		return repo;
 	}
 
-	
-	
-
-
+	@Override
+	public List<Laboratory> listbyfaculty(Integer idFaculty) {
+		// TODO Auto-generated method stub
+		return repo.listbyfaculty(idFaculty);
+	}
 }

@@ -42,6 +42,7 @@ public class MenuController {
 		return new ResponseEntity<List<Menu>>(menus, HttpStatus.OK);
 	}
 	
+	
 	@PostMapping
 	public ResponseEntity<Menu> registrar(@RequestBody Menu c) throws Exception {
 		
