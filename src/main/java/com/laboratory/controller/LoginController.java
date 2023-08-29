@@ -16,7 +16,6 @@ import com.laboratory.model.ResetToken;
 import com.laboratory.model.Users;
 import com.laboratory.service.ILoginService;
 import com.laboratory.service.IResetTokenService;
-import com.laboratory.utils.EmailUtil;
 
 
 @RestController
@@ -29,8 +28,8 @@ public class LoginController {
 	@Autowired
 	private IResetTokenService tokenService;
 
-	@Autowired
-	private EmailUtil emailUtil;
+	//@Autowired
+	//private EmailUtil emailUtil;
 
 	/*@PostMapping(value = "/enviarCorreo", consumes = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<Integer> enviarCorreo(@RequestBody String correo) throws Exception {

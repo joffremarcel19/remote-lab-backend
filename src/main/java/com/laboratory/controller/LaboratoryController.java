@@ -20,7 +20,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.laboratory.exception.ModeloNotFoundException;
 import com.laboratory.model.Laboratory;
-import com.laboratory.model.Submenu;
 import com.laboratory.service.ILaboratoryService;
 
 @RestController
