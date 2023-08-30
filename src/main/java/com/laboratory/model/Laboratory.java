@@ -27,6 +27,5 @@ public class Laboratory {
 	private String url;
 	@ManyToOne
 	@JoinColumn(name="idAsignature", nullable=false, foreignKey = @ForeignKey(name="FK_laboratory_asignature"))
-	private Asignature asignature;
-		
+	private Asignature asignature;		
 }

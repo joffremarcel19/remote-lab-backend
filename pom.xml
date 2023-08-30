@@ -13,7 +13,7 @@
 	<artifactId>laboratory</artifactId>
 	<version>laboratory1.0</version>
 	<name>laboratory-backend-v1</name>
-	<description>Sistemas</description>
+	<description>Laboratorys</description>
 	<packaging>war</packaging>
 	<properties>
 		<java.version>1.8</java.version>

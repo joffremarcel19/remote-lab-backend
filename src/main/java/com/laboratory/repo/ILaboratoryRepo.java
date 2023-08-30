@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.laboratory.model.Laboratory;
-import com.laboratory.model.Menu;
 
 public interface ILaboratoryRepo extends IGenericRepo<Laboratory, Integer>{
 
