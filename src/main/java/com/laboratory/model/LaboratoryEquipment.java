@@ -36,9 +36,15 @@ public class LaboratoryEquipment {
 	@ManyToOne
 	@JoinColumn(name="idLaboratory", nullable=false, foreignKey = @ForeignKey(name="FK_equipment_laboratory"))
 	private Laboratory laboratory;	
-	@OneToMany(mappedBy = "laboratoryEquipment", cascade = { CascadeType.ALL }, orphanRemoval = true)
-	private List<DayEquipment> dayLaboratory;	
+	
 	@OneToOne(targetEntity = VideoEquipment.class, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false, name = "idVideo")
-	private VideoEquipment videoEquipment;		
+	private VideoEquipment videoEquipment;	
+	
+	@OneToMany(mappedBy = "laboratoryEquipment", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<Schedule> schedule;
+	
+	@OneToMany(mappedBy = "laboratoryEquipment", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<ScheduleTemplate> scheduleTemplate;
+	
 }

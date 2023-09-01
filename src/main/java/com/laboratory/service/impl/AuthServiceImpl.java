@@ -32,17 +32,17 @@ public class AuthServiceImpl {
 			break;
 		}
 		
-		System.out.println(metodoRol);
+		//System.out.println(metodoRol);
 		String metodoRoles[] = metodoRol.split(",");
 		
 		Authentication usuarioLogueado = SecurityContextHolder.getContext().getAuthentication();
 		
 		for(GrantedAuthority auth : usuarioLogueado.getAuthorities()) {
 			String rolUser = auth.getAuthority();
-			System.out.println(rolUser);
+			//System.out.println(rolUser);
 			
 			for(String rolMet : metodoRoles) {
-				System.out.println(rolMet);
+				//System.out.println(rolMet);
 				if(rolUser.equalsIgnoreCase(rolMet)) {
 					rpta = true;
 				}

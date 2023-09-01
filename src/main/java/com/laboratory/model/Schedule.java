@@ -5,13 +5,17 @@ import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -22,18 +26,20 @@ public class Schedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idSchedule;	
+	
+	@Column(name="fromDate")
+	private LocalDateTime fromDate;
+	
+	@Column(name="toDate")
+	private LocalDateTime toDate;
+		
+	@OneToOne(targetEntity = ScheduleStatus.class, fetch = FetchType.EAGER)
+	@JoinColumn(nullable = false, name = "idScheduleStatus")
+	private ScheduleStatus scheduleStatus;	
+	
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="idEquipment", nullable=false, foreignKey = @ForeignKey(name="FK_Equipment_schedule"))
+	@JoinColumn(name = "idEquipment", nullable = false, foreignKey = @ForeignKey(name = "FK_Schedule_Laboratory"))
 	private LaboratoryEquipment laboratoryEquipment;
-	@Column(name="attentionDate")
-	private LocalDateTime attentionDate;
-	@Column(name="attentionStart")
-	private LocalTime attentionStart;
-	@Column(name="attentionEnd")
-	private LocalTime attentionEnd;
-	@Column(name="active")
-	private boolean active;
-	@Column(name="recordDate")
-	private LocalDateTime recordDate;
 	
 }

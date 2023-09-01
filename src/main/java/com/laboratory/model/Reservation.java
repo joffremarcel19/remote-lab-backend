@@ -38,7 +38,4 @@ public class Reservation {
 	@JoinColumn(nullable = false, name="id_state")
 	private ReservationState reservationState;
 	
-	@ManyToOne
-	@JoinColumn(name="idSchedule", nullable=false,foreignKey =@ForeignKey(name="FK_schedule_reservation"))
-	private Schedule schedule;	
 }

@@ -11,12 +11,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Days")
-public class Days {
-	
+@Table(name="scheduleStatus")
+public class ScheduleStatus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idDay;
-	@Column(name="nameDay")
-	private String nameDay;
+	private Integer idScheduleStatus;
+	
+	@Column(name="name")
+	private String name;
 }
