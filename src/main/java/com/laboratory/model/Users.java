@@ -47,6 +47,6 @@ public class Users {
 	
 	@ManyToOne
 	@JoinColumn(name = "idFaculty", nullable = false, foreignKey = @ForeignKey(name = "FK_user_faculty"))
-	private Faculty faculty;
+	private School faculty;
 		
 }

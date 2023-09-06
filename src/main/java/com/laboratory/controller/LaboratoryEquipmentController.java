@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +31,7 @@ public class LaboratoryEquipmentController {
 	@Autowired
 	private ILaboratoryEquipmentService service;
 
-	@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@GetMapping
 	public ResponseEntity<List<LaboratoryEquipment>> listar() throws Exception {
 				
@@ -40,7 +40,7 @@ public class LaboratoryEquipmentController {
 		return new ResponseEntity<List<LaboratoryEquipment>>(LaboratoryEquipments, HttpStatus.OK);
 	}
 	
-	@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@GetMapping("/listbylaboratory/{idLaboratory}")
 	public ResponseEntity<List<LaboratoryEquipment>> listbyfaculty(@PathVariable("idLaboratory") Integer idLaboratory) throws Exception {
 		List<LaboratoryEquipment> LaboratoryEquipments = new ArrayList<>();
@@ -49,7 +49,7 @@ public class LaboratoryEquipmentController {
 		return new ResponseEntity<List<LaboratoryEquipment>>(LaboratoryEquipments, HttpStatus.OK);
 	}
 	
-	@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PostMapping
 	public ResponseEntity<LaboratoryEquipment> registrar(@RequestBody LaboratoryEquipment c) throws Exception {
 
@@ -62,7 +62,7 @@ public class LaboratoryEquipmentController {
 	}
 
 	// modificar
-	@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PutMapping
 	public ResponseEntity<LaboratoryEquipment> modificar(@RequestBody LaboratoryEquipment c) throws Exception {
 
@@ -70,7 +70,7 @@ public class LaboratoryEquipmentController {
 		return new ResponseEntity<LaboratoryEquipment>(obj, HttpStatus.OK);
 	}
 	
-	@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@GetMapping("/{idLaboratoryEquipment}")
 	public ResponseEntity<LaboratoryEquipment> listarPorId(@PathVariable("idLaboratoryEquipment") Integer idLaboratoryEquipment) throws Exception {
 		LaboratoryEquipment obj = service.listarPorId(idLaboratoryEquipment);
@@ -82,7 +82,7 @@ public class LaboratoryEquipmentController {
 	}
 
 	// eliminar
-	@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminar(@PathVariable("idSubmenu") Integer id) throws Exception {
 		LaboratoryEquipment obj = service.listarPorId(id);

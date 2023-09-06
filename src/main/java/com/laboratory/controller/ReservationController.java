@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +30,7 @@ public class ReservationController {
 	@Autowired
 	private IReservationService service;
 
-	@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@GetMapping
 	public ResponseEntity<List<Reservation>> listar() throws Exception {
 		List<Reservation> Reservations = new ArrayList<>();
@@ -47,7 +47,7 @@ public class ReservationController {
 		return new ResponseEntity<List<Reservation>>(Reservations, HttpStatus.OK);
 	}*/
 	
-	@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PostMapping
 	public ResponseEntity<Reservation> registrar(@RequestBody Reservation c) throws Exception {
 
@@ -59,8 +59,8 @@ public class ReservationController {
 		return ResponseEntity.created(location).build();
 	}
 
-	// modificar
-	@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
+	/// modificar
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PutMapping
 	public ResponseEntity<Reservation> modificar(@RequestBody Reservation c) throws Exception {
 
@@ -68,7 +68,7 @@ public class ReservationController {
 		return new ResponseEntity<Reservation>(obj, HttpStatus.OK);
 	}
 	
-	@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@GetMapping("/{idReservation}")
 	public ResponseEntity<Reservation> listarPorId(@PathVariable("idReservation") Integer idReservation) throws Exception {
 		Reservation obj = service.listarPorId(idReservation);
@@ -80,7 +80,7 @@ public class ReservationController {
 	}
 
 	// eliminar
-	@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminar(@PathVariable("idSubmenu") Integer id) throws Exception {
 		Reservation obj = service.listarPorId(id);

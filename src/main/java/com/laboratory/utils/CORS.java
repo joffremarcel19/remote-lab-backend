@@ -21,8 +21,7 @@ public class CORS implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
@@ -40,15 +39,11 @@ public class CORS implements Filter {
 			response.setStatus(HttpServletResponse.SC_OK);
 		} else {
 			chain.doFilter(req, res);
-		}
-		// chain.doFilter(req, res);
+		}		
 	}
 	
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
+		// TODO Auto-generated method stub		
+	}	
 }

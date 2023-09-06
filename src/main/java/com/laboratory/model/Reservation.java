@@ -36,6 +36,8 @@ public class Reservation {
 	private LocalDateTime creationDate;
 	@OneToOne(targetEntity = ReservationState.class, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false, name="id_state")
-	private ReservationState reservationState;
-	
+	private ReservationState reservationState;	
+	@OneToOne(targetEntity = Schedule.class, fetch = FetchType.EAGER)
+	@JoinColumn(nullable = false, name="id_schedule")
+	private Schedule schedule;
 }

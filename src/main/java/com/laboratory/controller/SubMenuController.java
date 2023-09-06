@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +36,7 @@ public class SubMenuController {
 		return new ResponseEntity<List<Submenu>>(submenus, HttpStatus.OK);
 	}
 
-	@PreAuthorize("@authServiceImpl.tieneAcceso('listarId')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('listarId')")
 	@GetMapping("/{idSubmenu}")
 	public ResponseEntity<Submenu> listarPorId(@PathVariable("idSubmenu") Integer idSubmenu) throws Exception {
 		Submenu obj = service.listarPorId(idSubmenu);
@@ -60,7 +60,7 @@ public class SubMenuController {
 		}
 		return new ResponseEntity<List<Submenu>>(submenu, HttpStatus.OK);
 	}
-	@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PostMapping
 	public ResponseEntity<Submenu> registrar(@RequestBody Submenu c) throws Exception {
 
@@ -72,7 +72,7 @@ public class SubMenuController {
 	}
 
 	// modificar
-	@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PutMapping
 	public ResponseEntity<Submenu> modificar(@RequestBody Submenu c) throws Exception {
 		Submenu obj = service.modificar(c);
@@ -80,7 +80,7 @@ public class SubMenuController {
 	}
 
 	// eliminar
-	@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminar(@PathVariable("idSubmenu") Integer id) throws Exception {
 		Submenu obj = service.listarPorId(id);

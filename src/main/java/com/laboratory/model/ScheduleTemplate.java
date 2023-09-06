@@ -22,8 +22,7 @@ import lombok.Data;
 public class ScheduleTemplate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer IdScheduleTemplate;
-	
+	private Integer IdScheduleTemplate;	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "idEquipment", nullable = false, foreignKey = @ForeignKey(name = "FK_Schedule_Equipment"))
@@ -34,4 +33,5 @@ public class ScheduleTemplate {
 	private LocalTime startTemplate;
 	@Column(name="endTemplate")
 	private LocalTime endTemplate;
+	
 }

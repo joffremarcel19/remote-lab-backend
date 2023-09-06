@@ -1,5 +1,5 @@
 package com.laboratory;
-
+/*
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,4 +64,4 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter{
 		endpoints.tokenStore(tokenStore).accessTokenConverter(accessTokenConverter).tokenEnhancer(enhancerChain).authenticationManager(authenticationManager);
 	}
 
-}
+}*/

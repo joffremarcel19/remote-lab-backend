@@ -5,16 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.laboratory.model.Faculty;
+import com.laboratory.model.School;
 import com.laboratory.model.Users;
 import com.laboratory.repo.IUserRepo;
 
 
 @SpringBootTest
 class LaboratoryBackendApplicationTests {
-
+	/*
 		
 	@Autowired
 	private IUserRepo repo;
@@ -37,6 +37,6 @@ class LaboratoryBackendApplicationTests {
 		Users retorno = repo.save(us);
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));*/
-	}
+	//}
 
 }

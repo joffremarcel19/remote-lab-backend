@@ -1,5 +1,5 @@
 package com.laboratory.service.impl;
-
+/*
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,4 +53,4 @@ public class UsuarioServiceImpl extends CRUDImpl<Users, Integer> implements User
 		return repo;
 	}
 
-}
+}*/

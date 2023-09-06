@@ -1,5 +1,5 @@
 package com.laboratory;
-
+/*
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -35,4 +35,4 @@ public class AuthException implements AuthenticationEntryPoint {
 		mapper.writeValue(response.getOutputStream(), mapException);
 	}
 
-}
+}*/
