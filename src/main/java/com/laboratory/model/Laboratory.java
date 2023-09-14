@@ -22,15 +22,12 @@ import lombok.Data;
 public class Laboratory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idLaboratory;
-	@Column(name="laboratoryName", nullable=false, length=70)
-	private String laboratoryName;
+	private Integer id;
+	@Column(name="name", nullable=false, length=70)
+	private String name;
 	@Column(name="description", length=190)
-	private String description;
-	@Column(name="url", length=100)
-	private String url;	
-	
+	private String description;		
 
 	@OneToMany(mappedBy = "laboratory", cascade = { CascadeType.ALL }, orphanRemoval = true)
-	private List<Subject> subject;
+	private List<DetailSubject> detailSubject;
 }

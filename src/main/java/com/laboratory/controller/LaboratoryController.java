@@ -18,8 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.laboratory.DTO.DetailSubjectDTO;
+import com.laboratory.DTO.LaboratoryDTO;
+import com.laboratory.DTO.SchoolDTO;
+import com.laboratory.DTO.SubjectDTO;
 import com.laboratory.exception.ModeloNotFoundException;
+import com.laboratory.model.DetailSubject;
 import com.laboratory.model.Laboratory;
+import com.laboratory.model.Subject;
 import com.laboratory.service.ILaboratoryService;
 
 @RestController
@@ -29,57 +35,47 @@ public class LaboratoryController {
 	@Autowired
 	private ILaboratoryService service;
 
-	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
+	// @PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@GetMapping
 	public ResponseEntity<List<Laboratory>> listar() throws Exception {
-		List<Laboratory> laboratorys = new ArrayList<>();
-		laboratorys = service.listar();
+			
+		List<Laboratory> laboratorys=service.listar();
 		return new ResponseEntity<List<Laboratory>>(laboratorys, HttpStatus.OK);
 	}
-	
-	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
-	@GetMapping("/listbyfaculty/{idFaculty}")
-	public ResponseEntity<List<Laboratory>> listbyfaculty(@PathVariable("idFaculty") Integer idFaculty) throws Exception {
-		List<Laboratory> laboratorys = new ArrayList<>();
-		System.out.print(idFaculty);
-		laboratorys = service.listbyfaculty(idFaculty);
-		return new ResponseEntity<List<Laboratory>>(laboratorys, HttpStatus.OK);
-	}
-	
-	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
+
+	// @PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@PostMapping
-	public ResponseEntity<Laboratory> registrar(@RequestBody Laboratory c) throws Exception {
-
+	public ResponseEntity<Laboratory> registrar(@RequestBody Laboratory c) throws Exception {	
 		Laboratory obj = service.registrar(c);
-
-		// localhost:8080/pacientes/2
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{idLaboratory}")
-				.buildAndExpand(obj.getIdLaboratory()).toUri();
+				.buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 
 	// modificar
-	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
+	// @PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PutMapping
 	public ResponseEntity<Laboratory> modificar(@RequestBody Laboratory c) throws Exception {
 
 		Laboratory obj = service.modificar(c);
 		return new ResponseEntity<Laboratory>(obj, HttpStatus.OK);
 	}
-	
-	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
-	@GetMapping("/{idLaboratory}")
-	public ResponseEntity<Laboratory> listarPorId(@PathVariable("idLaboratory") Integer idLaboratory) throws Exception {
-		Laboratory obj = service.listarPorId(idLaboratory);
 
+	// @PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
+	@GetMapping("/{laboratory_id}")
+	public ResponseEntity<Laboratory> listarPorId(@PathVariable("laboratory_id") Integer laboratory_id)
+			throws Exception {
+
+		Laboratory obj = service.listarPorId(laboratory_id);
 		if (obj == null) {
-			throw new ModeloNotFoundException("ID NO ENCONTRADO " + idLaboratory);
+			throw new ModeloNotFoundException("ID NO ENCONTRADO " + laboratory_id);
 		}
+		
 		return new ResponseEntity<Laboratory>(obj, HttpStatus.OK);
 	}
 
 	// eliminar
-	//@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
+	// @PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminar(@PathVariable("idSubmenu") Integer id) throws Exception {
 		Laboratory obj = service.listarPorId(id);

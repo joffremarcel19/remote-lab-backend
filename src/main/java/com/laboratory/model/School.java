@@ -18,7 +18,7 @@ import lombok.Data;
 public class School {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer school_id;
+	private Integer id;
 	
 	@Column(name="name", nullable=false, length= 90)
 	private String name;

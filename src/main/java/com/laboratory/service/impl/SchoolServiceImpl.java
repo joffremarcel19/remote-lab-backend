@@ -25,7 +25,7 @@ public class SchoolServiceImpl extends CRUDImpl<School, Integer> implements ISch
 	}
 
 	@Override
-	public List<SchoolDTO> listarSchool() {
+	public List<School> listarSchool() {
 		// TODO Auto-generated method stub
 		return repo.listarSchool();
 	}

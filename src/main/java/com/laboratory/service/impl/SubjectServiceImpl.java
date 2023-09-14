@@ -1,6 +1,8 @@
 package com.laboratory.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,12 @@ public class SubjectServiceImpl extends CRUDImpl<Subject, Integer> implements IS
 	protected IGenericRepo<Subject, Integer> getRepo() {
 		// TODO Auto-generated method stub
 		return repo;
+	}
+
+	@Override
+	public List<Subject> listarSubject(Integer laboratory_id, Integer school_id) {
+		// TODO Auto-generated method stub
+		return repo.listarSubject(laboratory_id, school_id);
 	}
 
 	

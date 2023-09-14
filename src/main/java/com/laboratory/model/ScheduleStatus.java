@@ -15,7 +15,7 @@ import lombok.Data;
 public class ScheduleStatus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idScheduleStatus;
+	private Integer id;
 	
 	@Column(name="name")
 	private String name;

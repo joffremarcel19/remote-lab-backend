@@ -20,26 +20,32 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="laboratoryEquipment")
-public class LaboratoryEquipment {
+@Table(name="equipment")
+public class Equipment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idEquipment;
+	private Integer id;
+	
 	@Column(name="name")
 	private String name;
+	
 	@Column(name="description")
 	private String description;
-	@OneToOne(targetEntity = LaboratoryState.class, fetch = FetchType.EAGER)
-	@JoinColumn(nullable = false, name = "id_state")
-	private LaboratoryState laboratoryState;	
+	
+	@Column(name="ipCamera")
+	private String ipCamera;
+	
+	@Column(name="ipEquipment")
+	private String ipEquipment;
+	
 	@ManyToOne
 	@JoinColumn(name="idLaboratory", nullable=false, foreignKey = @ForeignKey(name="FK_equipment_laboratory"))
-	private Laboratory laboratory;	
+	private Laboratory laboratory;
 	
 	@OneToOne(targetEntity = VideoEquipment.class, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false, name = "idVideo")
-	private VideoEquipment videoEquipment;	
+	private VideoEquipment videoEquipment;
 	
 	@OneToMany(mappedBy = "laboratoryEquipment", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<Schedule> schedule;

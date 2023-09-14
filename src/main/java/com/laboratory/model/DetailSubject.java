@@ -1,6 +1,5 @@
 package com.laboratory.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -16,23 +15,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="subject")
-public class Subject {
+@Table(name="detailSubject")
+public class DetailSubject {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name="name", nullable=false, length=70)
-	private String name;
-	
-	@Column(name="description", nullable=false, length=150)
-	private String description;
 	
 	@ManyToOne
-	@JoinColumn(name = "school_id", nullable = false, foreignKey = @ForeignKey(name = "FK_subject_school"))
-	private School school;
-
-	/*@ManyToOne
+	@JoinColumn(name = "subject_id", nullable = false, foreignKey = @ForeignKey(name = "FK_subject_Detail"))
+	private Subject subject;
+	
+	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name = "laboratory_id", nullable = false, foreignKey = @ForeignKey(name = "FK_subject_laboratory"))
-	private Laboratory laboratory;*/
+	private Laboratory laboratory;
+	
 }

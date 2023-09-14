@@ -21,71 +21,63 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.laboratory.exception.ModeloNotFoundException;
-import com.laboratory.model.LaboratoryEquipment;
+import com.laboratory.model.Equipment;
 import com.laboratory.service.ILaboratoryEquipmentService;
 
 @RestController
 @RequestMapping("/equipment")
-public class LaboratoryEquipmentController {
+public class EquipmentController {
 
 	@Autowired
 	private ILaboratoryEquipmentService service;
 
-	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
-	@GetMapping
-	public ResponseEntity<List<LaboratoryEquipment>> listar() throws Exception {
-				
-		List<LaboratoryEquipment> LaboratoryEquipments = new ArrayList<>();
-		LaboratoryEquipments = service.listar();
-		return new ResponseEntity<List<LaboratoryEquipment>>(LaboratoryEquipments, HttpStatus.OK);
-	}
-	
-	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
+	//Listar todos los equipos por laboratorio
+	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")	
 	@GetMapping("/listbylaboratory/{idLaboratory}")
-	public ResponseEntity<List<LaboratoryEquipment>> listbyfaculty(@PathVariable("idLaboratory") Integer idLaboratory) throws Exception {
-		List<LaboratoryEquipment> LaboratoryEquipments = new ArrayList<>();
+	public ResponseEntity<List<Equipment>> listbyfaculty(@PathVariable("idLaboratory") Integer idLaboratory) throws Exception {
+		List<Equipment> LaboratoryEquipments = new ArrayList<>();
 		System.out.print(idLaboratory);
 		LaboratoryEquipments = service.listbylaboratory(idLaboratory);
-		return new ResponseEntity<List<LaboratoryEquipment>>(LaboratoryEquipments, HttpStatus.OK);
+		return new ResponseEntity<List<Equipment>>(LaboratoryEquipments, HttpStatus.OK);
 	}
 	
 	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PostMapping
-	public ResponseEntity<LaboratoryEquipment> registrar(@RequestBody LaboratoryEquipment c) throws Exception {
+	public ResponseEntity<Equipment> registrar(@RequestBody Equipment c) throws Exception {
 
-		LaboratoryEquipment obj = service.registrar(c);
+		Equipment obj = service.registrar(c);
 
 		// localhost:8080/pacientes/2
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{idLaboratoryEquipment}")
-				.buildAndExpand(obj.getIdEquipment()).toUri();
+				.buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 
 	// modificar
 	//@PreAuthorize("@authServiceImpl.tieneAcceso('editar')")
 	@PutMapping
-	public ResponseEntity<LaboratoryEquipment> modificar(@RequestBody LaboratoryEquipment c) throws Exception {
+	public ResponseEntity<Equipment> modificar(@RequestBody Equipment c) throws Exception {
 
-		LaboratoryEquipment obj = service.modificar(c);
-		return new ResponseEntity<LaboratoryEquipment>(obj, HttpStatus.OK);
+		Equipment obj = service.modificar(c);
+		return new ResponseEntity<Equipment>(obj, HttpStatus.OK);
 	}
 	
 	//@PreAuthorize("@authServiceImpl.tieneAcceso('listar')")
 	@GetMapping("/{idLaboratoryEquipment}")
-	public ResponseEntity<LaboratoryEquipment> listarPorId(@PathVariable("idLaboratoryEquipment") Integer idLaboratoryEquipment) throws Exception {
-		LaboratoryEquipment obj = service.listarPorId(idLaboratoryEquipment);
+	public ResponseEntity<Equipment> listarPorId(@PathVariable("idLaboratoryEquipment") Integer idLaboratoryEquipment) throws Exception {
+		Equipment obj = service.listarPorId(idLaboratoryEquipment);
 
 		if (obj == null) {
 			throw new ModeloNotFoundException("ID NO ENCONTRADO " + idLaboratoryEquipment);
 		}
-		return new ResponseEntity<LaboratoryEquipment>(obj, HttpStatus.OK);
+		return new ResponseEntity<Equipment>(obj, HttpStatus.OK);
 	}
 
 	// eliminar
 	//@PreAuthorize("@authServiceImpl.tieneAcceso('eliminar')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminar(@PathVariable("idSubmenu") Integer id) throws Exception {
-		LaboratoryEquipment obj = service.listarPorId(id);
+		Equipment obj = service.listarPorId(id);
 		if (obj == null) {
 			throw new ModeloNotFoundException("ID NO ENCONTRADO" + id);
 		}

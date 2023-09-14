@@ -11,5 +11,5 @@ import com.laboratory.model.School;
 
 public interface ISchoolRepo extends IGenericRepo<School, Integer>{
 	@Query(value="select * from school", nativeQuery = true)
-	List<SchoolDTO> listarSchool();
+	List<School> listarSchool();
 }

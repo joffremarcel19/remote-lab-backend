@@ -22,16 +22,18 @@ import lombok.Data;
 public class ScheduleTemplate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer IdScheduleTemplate;	
+	private Integer Id;	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "idEquipment", nullable = false, foreignKey = @ForeignKey(name = "FK_Schedule_Equipment"))
-	private LaboratoryEquipment laboratoryEquipment;	
-	@Column(name="dayTemplate")
-	private String dayTemplate;
-	@Column(name="startTemplate")
-	private LocalTime startTemplate;
-	@Column(name="endTemplate")
-	private LocalTime endTemplate;
+	private Equipment laboratoryEquipment;	
 	
+	@Column(name="day")
+	private String day;
+	
+	@Column(name="start")	
+	private LocalTime start;
+	
+	@Column(name="end")
+	private LocalTime end;	
 }
